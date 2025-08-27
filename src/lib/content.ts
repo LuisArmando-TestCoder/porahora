@@ -21,18 +21,18 @@ export const content = writable({
     },
     hero: {
         hook: 'Stop Wasting Time on Repetitive Tasks.',
-        subHook: 'Our platform automates your workflows so you can focus on what truly matters.',
+        subHook: 'Our platform automates your newsletters so you can focus on what truly matters.',
         primaryCta: 'Get Started for Free',
         secondaryCta: 'Watch a Demo',
         trustCues: ['No credit card required', '14-day free trial', 'Cancel anytime']
     },
     socialProof: {
         logos: [
-            { name: 'InnovateCorp', src: '/logos/innovatecorp.svg' },
-            { name: 'QuantumLeap', src: '/logos/quantumleap.svg' },
-            { name: 'Synergy Inc.', src: '/logos/synergy.svg' },
-            { name: 'Apex Solutions', src: '/logos/apex.svg' },
-            { name: 'Momentum Co.', src: '/logos/momentum.svg' }
+            { name: 'InnovateCorp', src: '/logos/logo_1.png' },
+            { name: 'QuantumLeap', src: '/logos/logo_2.png' },
+            { name: 'Synergy Inc.', src: '/logos/logo_3.png' },
+            { name: 'Apex Solutions', src: '/logos/logo_4.png' },
+            { name: 'Momentum Co.', src: '/logos/logo_5.png' }
         ],
         counts: 'Trusted by 10,000+ teams worldwide'
     },

@@ -116,8 +116,8 @@
 						<h1 class="hero-hook" data-speed="0.9">{$content.hero.hook}</h1>
 						<p class="hero-sub-hook" data-speed="0.8">{$content.hero.subHook}</p>
 						<div class="hero-ctas" data-speed="0.9">
-							<a href="/signup" class="cta-primary">{$content.hero.primaryCta}</a>
-							<a href="#demo" class="cta-secondary">{$content.hero.secondaryCta}</a>
+							<a href="/signup" class="cta-secondary-inverted">{$content.hero.primaryCta}</a>
+							<a href="#demo" class="cta-primary-inverted">{$content.hero.secondaryCta}</a>
 						</div>
 						<ul class="hero-trust-cues" data-speed="0.7">
 							{#each $content.hero.trustCues as cue}
@@ -392,7 +392,7 @@
 	}
 
 	/* --- ATOMS: Buttons & Links --- */
-	.cta-primary, .cta-secondary, .cta-link, .cta-primary-inverted {
+	.cta-primary, .cta-secondary, .cta-link, .cta-primary-inverted, .cta-secondary-inverted {
 		display: inline-block;
 		font-weight: 600;
 		border-radius: var(--radius-md);
@@ -441,6 +441,19 @@
 		border-color: var(--c-border);
 		&:hover {
 			border-color: var(--c-primary);
+		}
+	}
+
+	.cta-secondary-inverted {
+		background-color: var(--c-white);
+		color: var(--c-white);
+		box-shadow: inset 0 0 0 100px var(--c-primary);
+		transition: box-shadow 1s, color .2s, background-color .4s;
+
+		&:hover {
+			background-color: transparent;
+			color: var(--c-white);
+			box-shadow: inset 0 0 0 2px var(--c-white);
 		}
 	}
 
@@ -501,6 +514,7 @@
 		align-items: center;
 		text-align: center;
 		position: relative;
+		border-bottom: 1px solid var(--c-white);
 		p {
 			margin: 0;
 			font-weight: 500;
@@ -577,17 +591,19 @@
 
 	/* 3. Hero */
 	.hero {
+		background: var(--c-primary);
 		text-align: center;
-		padding-top: var(--space-xl);
+		padding-top: var(--space-xxl);
 		.container {
 			max-width: 800px;
 		}
 		.hero-hook {
 			margin-bottom: var(--space-md);
+			color: var(--c-white);
 		}
 		.hero-sub-hook {
 			font-size: 1.25rem;
-			color: var(--c-text-light);
+			color: var(--c-white);
 			margin: var(--space-xl);
 		}
 		.hero-ctas {
@@ -604,7 +620,7 @@
 			justify-content: center;
 			gap: var(--space-lg);
 			font-size: 0.9rem;
-			color: var(--c-text-light);
+			color: var(--c-white);
 			li {
 				position: relative;
 				&:not(:last-child)::after {
@@ -619,6 +635,7 @@
 
 	/* 4. Social Proof */
 	.social-proof {
+		z-index: 1;
 		padding: var(--space-xl) 0;
 		.container {
 			text-align: center;
@@ -629,11 +646,13 @@
 			margin-bottom: var(--space-lg);
 		}
 		.logo-strip {
+			filter: invert(1);
 			display: flex;
 			flex-wrap: wrap;
 			justify-content: center;
 			align-items: center;
 			gap: var(--space-xl);
+			margin: var(--space-xl) 0;
 			img {
 				max-height: 30px;
 				width: auto;
