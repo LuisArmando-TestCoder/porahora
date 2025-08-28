@@ -7,8 +7,30 @@
   import { browser } from "$app/environment";
   import { isScrollingDown } from "../../components/store"; 
   import MainSteps from "../../components/systems/steps/StepsTowardsPublish/MainSteps.svelte";
+  import { user as userStore } from "$lib/stores/user.js";
 
   let lastScrollY = 0;
+
+  // Poll for browser availability and log user until onMount
+  /** @type {number | undefined} */
+  let pollInterval;
+  let polled = false;
+  if (typeof window === "undefined") {
+    // SSR: do nothing
+  } else {
+    // In browser context (hydrated), but before onMount
+    pollInterval = setInterval(() => {
+      if (typeof window !== "undefined" && typeof document !== "undefined") {
+        userStore.subscribe((user) => {
+          if (!polled) {
+            console.log("User from cookie (poll):", user);
+            polled = true;
+          }
+        })();
+        clearInterval(pollInterval);
+      }
+    }, 100);
+  }
 
   function handleScroll() {
     const currentScrollY = window.scrollY;
@@ -30,6 +52,18 @@
     if (browser) { // Only run in browser
       lastScrollY = window.scrollY; // Initialize lastScrollY
       window.addEventListener("scroll", handleScroll, { passive: true });
+
+      // Log user info from store (continuous)
+      const unsubscribe = userStore.subscribe((user) => {
+        console.log("User from cookie:", user);
+      });
+      // Clean up
+      if (pollInterval) clearInterval(pollInterval);
+      return () => {
+        window.removeEventListener("scroll", handleScroll);
+        unsubscribe();
+        if (pollInterval) clearInterval(pollInterval);
+      };
     }
   });
 

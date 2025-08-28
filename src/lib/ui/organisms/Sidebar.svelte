@@ -1,7 +1,6 @@
 <script lang="ts">
-  import { session } from '$lib/stores/session';
-  import { get } from 'svelte/store';
   import { collapsed } from '$lib/stores/sidebar.store';
+  import { user } from '$lib/stores/user';
 
   export let links = [
     { name: 'Dashboard', url: '/dashboard' },
@@ -10,8 +9,6 @@
     { name: 'Reports', url: '/reports' },
     { name: 'Settings', url: '/settings' },
   ];
-
-  const user = get(session);
 </script>
 
 <aside class="sidebar" class:collapsed={$collapsed}>
@@ -28,11 +25,11 @@
     </ul>
   </nav>
 
-  {#if user}
+  {#if $user}
     <div class="sidebar__profile">
-      <img src={user.image || '/icons/user.png'} alt="User avatar" class="sidebar__profile-avatar" />
+      <img src={$user.picture || '/icons/user.png'} alt="User avatar" class="sidebar__profile-avatar" />
       <div class="sidebar__profile-info">
-        <p class="sidebar__profile-name">{user.name}</p>
+        <p class="sidebar__profile-name">{$user.name}</p>
         <a href="/logout" class="sidebar__profile-logout">Logout</a>
       </div>
     </div>
@@ -43,7 +40,6 @@
   @use '../../../styles/global.scss';
 
   .sidebar {
-    --collapsed-width: 40px;
     background: var(--c-bg-alt);
     padding: var(--space-md);
     height: 100vh;

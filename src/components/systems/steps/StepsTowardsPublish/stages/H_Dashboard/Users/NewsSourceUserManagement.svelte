@@ -4,11 +4,11 @@
   import { get, writable } from "svelte/store";
   import type { Writable } from "svelte/store";
   import type { NewsSource, NewsletterUser } from "../../../../../../types.ts"; // Using local types path
-  import store, { latestMessage } from "../../../../../../store.ts"; // Imported latestMessage
-  import updateConfiguration from "../../../../../requests/updateConfiguration.ts";
-  import getConfiguratorSession from "../../../../../requests/getConfiguratorSession.ts"; // Import config refresh function
-  import * as UserDataService from "./UserDataService.ts"; // Adjust path
-  import { userRemovalRequestStore } from "./userActions.ts"; // Import the shared store
+  import store, { latestMessage } from "../../../../../../store"; // Imported latestMessage
+  import updateConfiguration from "../../../../../requests/updateConfiguration";
+  import getConfiguratorSession from "../../../../../requests/getConfiguratorSession"; // Import config refresh function
+  import * as UserDataService from "./UserDataService"; // Adjust path
+  import { userRemovalRequestStore } from "./userActions"; // Import the shared store
 
   // Import Child Components (Assumed to be updated to accept function props)
   import ManualAddUserForm from "./ManualAddUserForm.svelte";
@@ -28,7 +28,7 @@
 
   // Import Request Function
   import triggerNewsSourceSend from "../../../../../requests/triggerNewsSourceSend.js"; // CORRECTED Import (added .js extension as required by NodeNext resolution)
-  import sendCustomContent from "../../../../../requests/sendCustomContent.ts"; // Import new request function
+  import sendCustomContent from "../../../../../requests/sendCustomContent"; // Import new request function
 
   // --- Props ---
   /** The specific news source object this component manages */

@@ -1,8 +1,8 @@
 <script lang="ts">
   import Image from "../../../../../../inputs/Image/Image.svelte";
-  import store, { saveToConfig } from "../../../../../../../store.ts";
+  import store, { saveToConfig } from "../../../../../../../store";
   import MarkdownText from "../../../../../../texts/MarkdownText/MarkdownText.svelte";
-    import updateConfiguration from "../../../../../../requests/updateConfiguration.ts";
+    import updateConfiguration from "../../../../../../requests/updateConfiguration";
 
   export let canReveal = true;
 

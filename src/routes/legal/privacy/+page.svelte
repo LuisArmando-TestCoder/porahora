@@ -16,9 +16,6 @@
 
 <div class="legal-page">
   <div class="container">
-    <a href="/" class="logo" aria-label="Homepage">
-      <svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" rx="20" fill="currentColor"/></svg>
-    </a>
     <h1>Privacy Policy</h1>
     <p>Last updated: August 10, 2025</p>
 

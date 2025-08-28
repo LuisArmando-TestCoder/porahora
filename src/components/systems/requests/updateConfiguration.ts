@@ -1,5 +1,5 @@
 import { get } from "svelte/store";
-import store from "../../store.ts";
+import store from "../../store";
 
 /* helper for mutating the store in-place */
 const patchStoreConfig = (cfg: Record<string, unknown>) =>
