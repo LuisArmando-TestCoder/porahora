@@ -3,7 +3,7 @@
   import { tick } from "svelte";
   import { get, writable } from "svelte/store";
   import type { Writable } from "svelte/store";
-  import type { NewsSource, NewsletterUser } from "../../../../../../types.ts"; // Using local types path
+  import type { NewsSource, NewsletterUser } from "../../../../../../types"; // Using local types path
   import store, { latestMessage } from "../../../../../../store"; // Imported latestMessage
   import updateConfiguration from "../../../../../requests/updateConfiguration";
   import getConfiguratorSession from "../../../../../requests/getConfiguratorSession"; // Import config refresh function

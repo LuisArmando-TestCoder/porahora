@@ -1,13 +1,14 @@
 <script lang="ts">
   import { page } from '$app/stores';
-  import { derived } from 'svelte/store';
+  import { derived, writable } from 'svelte/store';
   import { onMount, afterUpdate } from 'svelte';
   import { gsap } from '../../anim/gsap.client';
+    import { user } from '$lib/stores/user';
 
-  export let links = [
+  export let links = writable([
     { name: 'Pricing', url: '/pricing' },
     { name: 'Help', url: '/help' },
-  ];
+  ]);
 
   // Get the current path as a derived store for easier use in markup
   const currentPath = derived(page, ($page) => $page.url.pathname);
@@ -32,7 +33,7 @@
   }
 
   function updateUnderline() {
-    const activeIdx = links.findIndex(l => $page.url.pathname === l.url);
+    const activeIdx = $links.findIndex(l => $page.url.pathname === l.url);
     if (
       activeIdx !== -1 &&
       linkEls[activeIdx] &&
@@ -58,7 +59,19 @@
   onMount(() => {
     updateUnderline();
     window.addEventListener('resize', updateUnderline);
-    return () => window.removeEventListener('resize', updateUnderline);
+
+    // Polling interval to ensure underline stays in sync
+    const underlineInterval = setInterval(updateUnderline, 100);
+
+    if ($user) {
+      console.log("user", $user)
+      links.set([...$links, { name: 'Dashboard', url: '/dashboard' }]);
+      updateUnderline();
+    }
+    return () => {
+      window.removeEventListener('resize', updateUnderline);
+      clearInterval(underlineInterval);
+    };
   });
 
   $: $page.url.pathname, updateUnderline();
@@ -75,7 +88,7 @@
       <div class="header__nav-scroller">
         <nav class="header__nav" aria-label="Primary">
           <ul class="header__nav-list" bind:this={navListEl}>
-            {#each links as link, i}
+            {#each $links as link, i}
               <li class="header__nav-item">
                 <a
                   href={link.url}
@@ -95,8 +108,14 @@
         </nav>
       </div>
       <div class="header__actions">
-        <a href="/login" class="header__action header__action--secondary">Log In</a>
-        <a href="/signup" class="header__action header__action--primary">Get Started</a>
+        {#if $user && !$page.url.pathname.includes("dashboard")}
+          <a href="/dashboard" class="header__action header__action--primary">Go to Workspace</a>
+        {:else if $page.url.pathname.includes("dashboard")}
+          {$user.name}
+        {:else}
+          <a href="/login" class="header__action header__action--secondary">Log In</a>
+          <a href="/signup" class="header__action header__action--primary">Get Started</a>
+        {/if}
       </div>
     </div>
   </header>

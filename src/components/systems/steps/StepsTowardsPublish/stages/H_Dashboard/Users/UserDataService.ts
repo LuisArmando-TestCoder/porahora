@@ -3,14 +3,14 @@
 import { get } from "svelte/store"; // Removed writable
 
 // Import Request Functions (adjust paths as necessary)
-import store, { saveToStore } from "../../../../../../store.ts"; // Added saveToStore
-import type { NewsletterUser } from "../../../../../../types.ts";
-import { addNewsletterUser } from "../../../../../requests/addNewsletterUserEndpoint.ts";
-import subscribeNewsletterUser from "../../../../../requests/subscribeNewsletterUser.ts";
-import getAllSubscribersFromConfigEndpoint from "../../../../../requests/getAllSubscribersFromConfigEndpoint.ts";
-import unsubscribeUserToConfigNewsSource from "../../../../../requests/unsubscribeUserToConfigNewsSource.ts";
-import getLeadsForConfigurator from "../../../../../requests/getLeadsForConfigurator.ts";
-import getUsersFromRawFileOrText from "../../../../../requests/getUsersFromRawFileOrText.ts";
+import store, { saveToStore } from "../../../../../../store"; // Added saveToStore
+import type { NewsletterUser } from "../../../../../../types";
+import { addNewsletterUser } from "../../../../../requests/addNewsletterUserEndpoint";
+import subscribeNewsletterUser from "../../../../../requests/subscribeNewsletterUser";
+import getAllSubscribersFromConfigEndpoint from "../../../../../requests/getAllSubscribersFromConfigEndpoint";
+import unsubscribeUserToConfigNewsSource from "../../../../../requests/unsubscribeUserToConfigNewsSource";
+import getLeadsForConfigurator from "../../../../../requests/getLeadsForConfigurator";
+import getUsersFromRawFileOrText from "../../../../../requests/getUsersFromRawFileOrText";
 
 // --- Helper Function ---
 /**

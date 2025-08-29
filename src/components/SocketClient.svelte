@@ -2,7 +2,7 @@
   import { onMount } from "svelte";
   import { get } from "svelte/store";
   import { browser } from "$app/environment";
-  import store, { latestMessage, socket } from "./store.ts";
+  import store, { latestMessage, socket } from "./store";
 
   let socketInitialized = false;
   let lastId = "";

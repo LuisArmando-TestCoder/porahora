@@ -1,8 +1,8 @@
 // src/components/systems/requests/getAllSubscribersFromConfigEndpoint.ts
 
 import { get } from "svelte/store";
-import store from "../../store.ts"; // Adjust path if needed
-import type { NewsletterUser } from "../../types.ts"; // Adjust path if needed
+import store from "../../store"; // Adjust path if needed
+import type { NewsletterUser } from "../../types"; // Adjust path if needed
 
 /**
  * Fetches all subscribers associated with a specific configuration ID,

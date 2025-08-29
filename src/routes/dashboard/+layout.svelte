@@ -1,14 +1,6 @@
 <script>
   import Sidebar from "$lib/ui/organisms/Sidebar.svelte";
   import { collapsed } from "$lib/stores/sidebar.store";
-  import { user as userStore } from "$lib/stores/user.js";
-  export let data;
-
-  // Debug: log the user data received from server
-  console.log("User from data in +layout.svelte:", data.user);
-
-  // Set the global user store when the prop changes
-  $: userStore.set(data.user);
 </script>
 
 <div class="dashboard-layout" class:collapsed={$collapsed}>

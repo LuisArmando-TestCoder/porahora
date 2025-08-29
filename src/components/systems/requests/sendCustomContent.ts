@@ -1,6 +1,6 @@
 import { get } from "svelte/store";
-import store from "../../store.ts";
-import type { Store as AppStoreType } from "../../types.ts";
+import store from "../../store";
+import type { Store as AppStoreType } from "../../types";
 
 export default async function sendCustomContent(
   configId: string,

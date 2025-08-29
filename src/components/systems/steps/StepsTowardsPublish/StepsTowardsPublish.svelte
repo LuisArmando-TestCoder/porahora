@@ -6,9 +6,9 @@
     saveAllKeysToSaveInLocalStorage,
     saveToStore,
     setStorageFromKeysToSave,
-  } from "../../../store.ts";
+  } from "../../../store";
   import Steps from "../Steps.svelte";
-  import type { Store } from "../../../types.ts";
+  import type { Store } from "../../../types";
 
   export let components;
 

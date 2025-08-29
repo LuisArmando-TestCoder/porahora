@@ -1,13 +1,18 @@
-import store, { emptyStoreSnapshot, saveToConfig, saveToStore } from "../../store.ts";
-import { complementaryColor, complementaryColorSnapshot, foregroundColor, foregroundColorSnapshot } from "../../ThemeChanger/theme-store.ts";
-import type { Store } from "../../types.ts";
+import { user } from "$lib/stores/user";
+import store, { emptyStoreSnapshot, saveToConfig, saveToStore } from "../../store";
+import { complementaryColor, complementaryColorSnapshot, foregroundColor, foregroundColorSnapshot } from "../../ThemeChanger/theme-store";
+import type { Store } from "../../types";
 
-export default function logout() {
+export default async function logout() {
+  // Call server-side endpoint to erase user cookie
+  await fetch("/logout", { method: "POST" });
+
   foregroundColor.set(foregroundColorSnapshot);
   complementaryColor.set(complementaryColorSnapshot);
-  saveToStore(emptyStoreSnapshot)
+  saveToStore(emptyStoreSnapshot);
   deleteAllKeysToSaveInLocalStorage();
-  window.location.href = "/"
+  user.set(null);
+  window.location.href = "/";
 }
 
 function deleteAllKeysToSaveInLocalStorage() {

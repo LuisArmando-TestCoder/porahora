@@ -1,5 +1,5 @@
 import { get } from "svelte/store";
-import store from "../../store.ts";
+import store from "../../store";
 
 /**
  * Puedes usar esta función para enviar un archivo o texto crudo

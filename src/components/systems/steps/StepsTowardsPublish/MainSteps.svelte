@@ -1,7 +1,7 @@
 <script lang="ts">
-  import type { Store } from "../../../types.ts";
-  import theStoreWritable, { saveToStore } from "../../../store.ts";
-  import askForNewAuthCode from "../../requests/askForNewAuthCode.ts";
+  import type { Store } from "../../../types";
+  import theStoreWritable, { saveToStore } from "../../../store";
+  import askForNewAuthCode from "../../requests/askForNewAuthCode";
   import A_Welcome1 from "./stages/A_Welcome1.svelte";
   import B_Welcome2 from "./stages/B_Welcome2.svelte";
   import C_Welcome3 from "./stages/C_Welcome3.svelte";
@@ -11,13 +11,13 @@
   import G_AuthCode from "./stages/G_AuthCode.svelte";
   import H_Dashboard from "./stages/H_Dashboard/H_Dashboard.svelte";
   import StepsTowardsPublish from "./StepsTowardsPublish.svelte";
-  import askIsAuthCodeValid from "../../requests/askIsAuthCodeValid.ts";
+  import askIsAuthCodeValid from "../../requests/askIsAuthCodeValid";
   import { onMount } from "svelte";
   import { get } from "svelte/store";
   import Config from "./stages/H_Dashboard/Config/Config.svelte";
   import NewsSource from "./stages/H_Dashboard/NewsSource/NewsSource.svelte"; // Explicit default import
   import Users from "./stages/H_Dashboard/Users/Users.svelte"; // Corrected import (already was correct, maybe TS server lag?)
-  import store from "../../../store.ts";
+  import store from "../../../store";
 
   const t = () => {
     if (

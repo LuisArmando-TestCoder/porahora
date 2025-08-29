@@ -5,10 +5,10 @@
   import type { NewsSource } from "../../../../../../types.js"; // Import NewsSource type if not already implicitly available - ADDED .js
 
   // Central Store and Types
-  import store from "../../../../../../store.ts"; // Adjust path
+  import store from "../../../../../../store"; // Adjust path
 
   // Data Service (Handles state and API calls)
-  import * as UserDataService from "./UserDataService.ts"; // Adjust path
+  import * as UserDataService from "./UserDataService"; // Adjust path
 
   // Child Components
   import NewsSourceUserManagement from "./NewsSourceUserManagement.svelte";

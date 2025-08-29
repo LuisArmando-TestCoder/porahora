@@ -1,7 +1,7 @@
 import { get, writable } from "svelte/store";
-import type { Populator, Store } from "./types.ts";
+import type { Populator, Store } from "./types";
 import type { Socket } from "socket.io-client";
-import updateConfiguration from "./systems/requests/updateConfiguration.ts";
+import updateConfiguration from "./systems/requests/updateConfiguration";
 
 export const latestMessage = writable<string>("");
 
@@ -89,6 +89,7 @@ export const emptyStoreSnapshot = JSON.parse(JSON.stringify(get(store)));
 export default store;
 
 export function saveToStore(objectValue: { [index: string]: any }) {
+  setAllKeysToSaveInLocalStorage();
   store.set({
     ...get(store),
     ...objectValue,
@@ -192,10 +193,14 @@ export function setStorageFromKeysToSave() {
   }
 }
 
+function setAllKeysToSaveInLocalStorage() {
+  for (const key of get(store).keysToSave) {
+    localStorage.setItem(key, JSON.stringify(getFromStore(key)));
+  }
+}
+
 export function saveAllKeysToSaveInLocalStorage() {
   store.subscribe((currentStore: Store) => {
-    for (const key of currentStore.keysToSave) {
-      localStorage.setItem(key, JSON.stringify(getFromStore(key)));
-    }
+    setAllKeysToSaveInLocalStorage();
   });
 }

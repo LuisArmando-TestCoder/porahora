@@ -3,7 +3,7 @@ import { writable } from 'svelte/store';
 export const authContent = writable({
   logo: "/icons/logo.png",
   login: {
-    title: "Log in to Platform of Platforms",
+    title: "Log in to our Newsletter Orchestrator",
     subtitle: "Connect to continue where you left off.",
     google: "Continue with Google",
     or: "or",

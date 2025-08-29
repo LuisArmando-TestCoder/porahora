@@ -1,18 +1,18 @@
 <script lang="ts">
   import { writable, get } from "svelte/store";
-  import type { NewsSource } from "../../../../../../types.ts";
+  import type { NewsSource } from "../../../../../../types";
   import PlainText from "../../../../../inputs/PlainText/PlainText.svelte";
   import ScheduleTime from "../../../../../inputs/ScheduleTime/ScheduleTime.svelte";
   import SubmitButton from "../../../../../buttons/SubmitButton/SubmitButton.svelte";
   import ToggleCard from "../../../../../buttons/ToggleCard/ToggleCard.svelte";
   import Switch from "../../../../../selectors/Switch/Switch.svelte"; // Import Switch component
-  import updateNewsSource from "../../../../../requests/updateNewsSource.ts";
-  import { processNewsSourceAction } from "./newsSourceActions.ts";
+  import updateNewsSource from "../../../../../requests/updateNewsSource";
+  import { processNewsSourceAction } from "./newsSourceActions";
   import Link from "../../../../../inputs/Link/Link.svelte";
-  import regenerateSelectors from "../../../../../requests/regenerateSelectors.ts";
-  import store, { latestMessage } from "../../../../../../store.ts";
+  import regenerateSelectors from "../../../../../requests/regenerateSelectors";
+  import store, { latestMessage } from "../../../../../../store";
   import IconButton from "../../../../../buttons/IconButton/IconButton.svelte";
-  import { generatePersonality } from "../../../../../requests/generatePersonality.ts";
+  import { generatePersonality } from "../../../../../requests/generatePersonality";
   import Personality from "../../../../../inputs/Personality/Personality.svelte";
   import CopyUrlWithQR from "../../../../../../common/CopyUrlWithQR.svelte";
   import EmailInput from "../../../../../inputs/Email/Email.svelte"; // Added

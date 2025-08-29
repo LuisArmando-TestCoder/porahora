@@ -1,7 +1,7 @@
 import { get } from "svelte/store";
-import store from "../../store.ts";
-import type { NewsletterUser } from "../../types.ts";
-import getConfiguratorSession from "./getConfiguratorSession.ts";
+import store from "../../store";
+import type { NewsletterUser } from "../../types";
+import getConfiguratorSession from "./getConfiguratorSession";
 
 export interface AddNewsletterUserResponse {
   message: string;

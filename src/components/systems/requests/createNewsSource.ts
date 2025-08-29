@@ -1,10 +1,10 @@
 import { get } from "svelte/store";
 // Removed duplicate import
-import store, { saveToConfig } from "../../store.ts"; // Removed saveToStore
-import { addNewsletterUser } from "./addNewsletterUserEndpoint.ts";
-import subscribeNewsletterUser from "./subscribeNewsletterUser.ts";
+import store, { saveToConfig } from "../../store"; // Removed saveToStore
+import { addNewsletterUser } from "./addNewsletterUserEndpoint";
+import subscribeNewsletterUser from "./subscribeNewsletterUser";
 // Removed getAllSubscribersFromConfigEndpoint import
-import { refreshSubscribers } from "../steps/StepsTowardsPublish/stages/H_Dashboard/Users/UserDataService.ts"; // Import the centralized refresh function
+import { refreshSubscribers } from "../steps/StepsTowardsPublish/stages/H_Dashboard/Users/UserDataService"; // Import the centralized refresh function
 
 /**
  * Crea una nueva fuente de noticias asociada a una configuración.

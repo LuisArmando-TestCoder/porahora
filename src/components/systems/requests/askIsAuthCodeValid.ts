@@ -1,13 +1,14 @@
 import { get } from "svelte/store";
-import store, { saveToStore } from "../../store.ts";
-import getConfiguratorSession from "./getConfiguratorSession.ts";
+import store, { saveToStore } from "../../store";
+import getConfiguratorSession from "./getConfiguratorSession";
+import { user } from "$lib/stores/user";
 
 export default async (onSuccessCallback?: Function) => {
-  const response = await fetch(
-    `${get(store).apiURL()}/auth/${get(store).configuratorEmail}?code=${
-      get(store).authCode
-    }`
-  );
+  const url = `${get(store).apiURL()}/auth/${get(store).configuratorEmail}?code=${
+    get(store).authCode
+  }&sub=${get(user)?.sub}`;
+
+  const response = await fetch(url);
 
   let isValid = false;
   let errorMessage = "Authentication failed. Please try again."; // Default error

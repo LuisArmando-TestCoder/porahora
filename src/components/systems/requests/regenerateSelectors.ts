@@ -1,6 +1,6 @@
 import { get } from "svelte/store";
-import store, { saveToConfig } from "../../store.ts";
-import type { NewsSource } from "../../types.ts";
+import store, { saveToConfig } from "../../store";
+import type { NewsSource } from "../../types";
 
 export default async function regenerateSelectors(configId: string, newsSourceId: string, newUrl?: string) {
   const response = await fetch(

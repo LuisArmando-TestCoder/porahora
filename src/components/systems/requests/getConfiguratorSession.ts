@@ -1,14 +1,14 @@
 import { get } from "svelte/store";
-import store, { saveToConfig, saveToStore } from "../../store.ts";
+import store, { saveToConfig, saveToStore } from "../../store";
 import {
   foregroundColor,
   complementaryColor,
-} from "../../ThemeChanger/theme-store.ts"; // Corrected casing
-import { getComplementaryColor } from "../inputs/ColorPicker/getColorSuggestions.ts";
-import createInitialConfiguratorConfig from "./createInitialConfiguratorConfig.ts";
-import createNewsSource from "./createNewsSource.ts";
+} from "../../ThemeChanger/theme-store"; // Corrected casing
+import { getComplementaryColor } from "../inputs/ColorPicker/getColorSuggestions";
+import createInitialConfiguratorConfig from "./createInitialConfiguratorConfig";
+import createNewsSource from "./createNewsSource";
 // Removed unused imports: addNewsletterUser, subscribeNewsletterUser
-import { loadInitialData, refreshSubscribers } from "../steps/StepsTowardsPublish/stages/H_Dashboard/Users/UserDataService.ts"; // Import refresh function
+import { loadInitialData, refreshSubscribers } from "../steps/StepsTowardsPublish/stages/H_Dashboard/Users/UserDataService"; // Import refresh function
 
 async function getConfigFetchResponse(authHeaders: {
   [index: string]: string;

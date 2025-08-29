@@ -1,6 +1,7 @@
 <script lang="ts">
   import { collapsed } from '$lib/stores/sidebar.store';
   import { user } from '$lib/stores/user';
+    import logout from '../../../components/systems/requests/logout';
 
   export let links = [
     { name: 'Dashboard', url: '/dashboard' },
@@ -30,7 +31,9 @@
       <img src={$user.picture || '/icons/user.png'} alt="User avatar" class="sidebar__profile-avatar" />
       <div class="sidebar__profile-info">
         <p class="sidebar__profile-name">{$user.name}</p>
-        <a href="/logout" class="sidebar__profile-logout">Logout</a>
+        <a on:click={() => {
+          logout();
+        }} class="sidebar__profile-logout">Logout</a>
       </div>
     </div>
   {/if}
@@ -140,5 +143,10 @@
   .sidebar__profile-logout {
     font-size: 0.9rem;
     color: var(--c-text-light);
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 </style>

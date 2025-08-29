@@ -1,5 +1,5 @@
 import { get } from "svelte/store";
-import store from "../../store.ts";
+import store from "../../store";
 
 export default async function createInitialConfiguratorConfig(authHeaders: {
   [index: string]: string;
